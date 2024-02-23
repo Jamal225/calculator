@@ -9,8 +9,8 @@ import (
 )
 
 func arabicToRoman(num int) string {
-	if num < 1 || num > 101 {
-		panic("The number must be in the range from 1 to 101")
+	if num < 1 {
+		panic("There are no negative numbers in the Roman system")
 	}
 
 	romanNumerals := map[int]string{
@@ -100,7 +100,6 @@ func calculate(input string) (int, bool) {
 	num1 := items[0]
 	operator := items[1]
 	num2 := items[2]
-	var result int
 
 	if num1Int, err := strconv.Atoi(num1); err == nil {
 		num2Int, err := strconv.Atoi(num2)
@@ -117,11 +116,7 @@ func calculate(input string) (int, bool) {
 		if validateNumbers(num1Int, num2Int) {
 			return operation(num1Int, num2Int, operator), true
 		}
-		if result < 1 {
-			panic("the result of calculations with Roman numbers turned out to be less than 1")
-		}
 	}
-
 	return 0, false
 }
 
